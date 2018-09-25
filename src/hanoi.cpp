@@ -1,6 +1,6 @@
 // The Tower of Hanoi problem
 
-#include<iostream>
+#include <iostream>
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
@@ -38,6 +38,7 @@ int main()
     cout << "       >> Enter the number of disks you want to play: ";
     cin >> n;
 
+    // Check if valid user input
     if(n < 1)
     {
         cout << "There must be at least 1 disk" << endl;
@@ -48,6 +49,8 @@ int main()
 
     cout << "Sequence of movements:" << endl << endl;
 
+    clock_t start = clock();
+
     // Call TowerHanoi function
     TowerHanoi(n, l, r, m);
 
@@ -55,5 +58,20 @@ int main()
     cout << "Total number of steps: " << steps << "." << endl;
     steps = 0;
 
+    clock_t stop = clock();
+    clock_t t = stop - start;
+    double duration = t / (double) CLOCKS_PER_SEC;
+    double limit = 120.0;
+
+    if(duration < limit)
+    {
+        cout << "Calculated in " << duration << " seconds." << endl;
+    }
+    else
+    {
+        double tMin = duration/60;
+        cout << "Calculated in " << tMin << " minutes." << endl;
+    }
+    
     return 0;
 }
